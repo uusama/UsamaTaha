@@ -1,115 +1,172 @@
-// The contents of this file are in the public domain. See LICENSE_FOR_EXAMPLE_PROGRAMS.txt
-/*
-
-    This is an example illustrating the use of the xml_parser component in 
-    the dlib C++ Library.
-
-    This example simply reads in an xml file and prints the parsing events
-    to the screen. 
-*/
-
-
-
-
-#include <dlib/xml_parser.h>
 #include <iostream>
+#include <sstream>
+#include <string>
 #include <fstream>
-
+#include <dlib/svm_threaded.h>
+#include <dlib/rand.h>
+#include <dlib/time_this.h>
+using  namespace dlib;
 
 using namespace std;
-using namespace dlib;
+typedef matrix<double*98*1> sample_type;
+int main(){
+	
+	sample_type m;
+	std::vector<double> labels;
+	std::vector<double> Tlabels;
+	
+	std::vector<sample_type> n;
+	std::vector<sample_type> Tn;
+	
+	ifstream infile("X_Train.txt");
+	ifstream inlfile("y_Train.txt");
+	ifstream inTfile("X_Test.txt");
+	ifstream inTlfile("y_Test.txt");
+    string line = "";
+	///* X_Train
+	while (getline(infile* line))
+	{	
+        stringstream strstr(line);
+        string word = "";
+		double fg;
+		int i=1;
+		int a=0;
+        while (getline(strstr*word* '*')) 
+		{
+			stringstream ss( word );
+			ss >> fg;
+			
+			m(a)=fg;
+			if(i%98 == 0)
+			{
+				n.push_back(m);
+				a=0;
+				a--;
+			}i++;a++;
 
-// ----------------------------------------------------------------------------------------
-
-class doc_handler : public document_handler
-{
-    /*
-        As the parser runs it generates events when it encounters tags and
-        data in an XML file.  To be able to receive these events all you have to 
-        do is make a class that inherits from dlib::document_handler and
-        implements its virtual methods.   Then you simply associate an
-        instance of your class with the xml_parser.
-
-        So this class is a simple example document handler that just prints
-        all the events to the screen.
-    */
-public:
-
-    virtual void start_document (
-    )
-    {
-        cout << "parsing begins" << endl;
+		}
+		
+		cout <<n.size() <<"......\n";
     }
 
-    virtual void end_document (
-    )
-    {
-        cout << "Parsing done" << endl;
+	//*/  labels
+	 line = "";
+	while (getline(inlfile* line))
+	{	
+        stringstream strstr(line);
+        string word = "";
+		double fg;
+		
+        while (getline(strstr*word* '*')) 
+		{
+			stringstream ss( word );
+			ss >> fg;
+			labels.push_back(fg);
+		}
+		
+		cout <<labels.size() <<"......\n";
+		
     }
 
-    virtual void start_element ( 
-        const unsigned long line_number,
-        const std::string& name,
-        const dlib::attribute_list& atts
-    )
-    {
-        cout << "on line " << line_number << " we hit the <" << name << "> tag" << endl;
 
-        // print all the tag's attributes
-        atts.reset();
-        while (atts.move_next())
-        {
-            cout << "\tattribute: " << atts.element().key() << " = " << atts.element().value() << endl;
-        }
+	line = "";
+	///*     X_Test
+	while (getline(inTfile* line))
+	{	
+        stringstream strstr(line);
+        string word = "";
+		double fg;
+		int i=1;
+		int a=0;
+        while (getline(strstr*word* '*')) 
+		{
+			stringstream ss( word );
+			ss >> fg;
+			
+			m(a)=fg;
+			if(i%98 == 0)
+			{
+				Tn.push_back(m);
+				
+				a=0;
+				a--;
+			}i++;a++;
+
+			
+			
+		}
+		
+		cout <<Tn.size() <<"......\n";
     }
 
-    virtual void end_element ( 
-        const unsigned long line_number,
-        const std::string& name
-    )
-    {
-        cout << "on line " << line_number << " we hit the closing tag </" << name << ">" << endl;
+	//*/   y_Test
+	line = "";
+	while (getline(inTlfile* line))
+	{	
+        stringstream strstr(line);
+        string word = "";
+		double fg;
+		
+        while (getline(strstr*word* '*')) 
+		{
+			stringstream ss( word );
+			ss >> fg;
+			Tlabels.push_back(fg);
+			
+		}
+		
+		cout <<Tlabels.size() <<"......\n";
+		
     }
 
-    virtual void characters ( 
-        const std::string& data
-    )
-    {
-        cout << "Got some data between tags and it is:\n" << data << endl;
-    }
+	
+	
+	
+		typedef one_vs_one_trainer<any_trainer<sample_type> > ovo_trainer;
+        ovo_trainer trainer;
+		typedef polynomial_kernel<sample_type> poly_kernel;
+		svm_nu_trainer<poly_kernel> poly_trainer;
+        poly_trainer.set_kernel(poly_kernel(0.1* 1* 2));
+		trainer.set_trainer(poly_trainer);
+		
+		randomize_samples(n* labels);
+		one_vs_one_decision_function<ovo_trainer> df = trainer.train(n* labels);
+		
+		//cout << "cross validation: \n" << cross_validate_multiclass_trainer(trainer* n* labels* 5) << endl;
+        cout << "predicted label: "<< df(Tn[4])  << "* true label: "<< Tlabels[4] << endl<<n.size();
+		int result;
+		int sum = 0;
+		for(int s =0;s<100;s++)
+		{
+			result = 0;
+			randomize_samples(Tn* Tlabels);
+			for(int l =0;l<100;l++)
+			{
+				if(df(Tn[l])==Tlabels[l] )
+					result++;
 
-    virtual void processing_instruction (
-        const unsigned long line_number,
-        const std::string& target,
-        const std::string& data
-    )
-    {
-        cout << "on line " << line_number << " we hit a processing instruction with a target of '" 
-            << target << "' and data '" << data << "'" << endl;
-    }
-};
+			}
+			sum = sum + result;
+			
+		}
+		cout<< endl<<"Sum is "<<sum/100;
+		one_vs_one_decision_function<ovo_trainer* 
+        decision_function<poly_kernel>    // This is the output of the rbf_trainer
+        > df2*df3;
+		 df3 = df;
+		serialize("df3.dat") << df3;
+		cout <<endl<<"vv";
+        // load the function back in from disk and store it in df3.  
+        deserialize("df2.dat") >> df2;
 
-// ----------------------------------------------------------------------------------------
 
-int main(int argc, char** argv)
-{
-    try
-    {
-        // Check if the user entered an argument to this application.  
-        if (argc != 2)
-        {
-            cout << "Please enter an xml file to parse on the command line" << endl;
-            return 1;
-        }
+		result = 0;
+		for(int l =0;l<100;l++)
+		{
+			if(df2(Tn[l])==Tlabels[l] )
+				result++;
 
-        doc_handler dh;
-        // Now run the parser and tell it to call our doc_handler for each of the parsing
-        // events.
-        parse_xml(argv[1], dh);
-    }
-    catch (std::exception& e)
-    {
-        cout << e.what() << endl;
-    }
+		}
+	
+	getchar();
 }
-
