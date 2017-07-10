@@ -1,7 +1,8 @@
 # clmtrackr
 ======
 this code detect emotion using a webcam through cLassifing 49 keypoints optained using [dlib library](http://dlib.net/)
-It can classify 6 emotions 
+
+the program can classify 6 emotions 
 * anger
 * disgust
 * fear
@@ -17,13 +18,13 @@ Extended Cohn-Kanade Dataset (CK+)
 
 # Usage 
 ======
-you can install the program through Cmake using the provided file
+you can install the program using the provided Cmake file
 you will need to download [Dlib model](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 to be able to run the program . 
 notice this need you to have openCv installed in order to run it.
 # P.S
 =====
-the code is alittle rugh but i couldn't find the time to optmize it  
+the code is a little rugh but i couldn't find the time to optmize it  
 
 ### License ###
 
