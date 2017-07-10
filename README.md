@@ -11,6 +11,9 @@ It can classify 6 emotions
 
 the classifer used is an SVm classifer with an accurcay of 99% 
 obtained from 100 ssample.
+# Dataset
+======
+Extended Cohn-Kanade Dataset (CK+)
 
 # Usage 
 ======

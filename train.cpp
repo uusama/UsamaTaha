@@ -18,10 +18,10 @@ int main(){
 	std::vector<sample_type> n;
 	std::vector<sample_type> Tn;
 	
-	ifstream infile("X_Train.txt");
-	ifstream inlfile("y_Train.txt");
-	ifstream inTfile("X_Test.txt");
-	ifstream inTlfile("y_Test.txt");
+	ifstream infile("data/X_Train.txt");
+	ifstream inlfile("data/y_Train.txt");
+	ifstream inTfile("data/X_Test.txt");
+	ifstream inTlfile("data/y_Test.txt");
     string line = "";
 	///* X_Train
 	while (getline(infile* line))
