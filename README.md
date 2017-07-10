@@ -1,4 +1,4 @@
-# clmtrackr
+# Emotion Detection
 ======
 the code detect emotion using a webcam through cLassifing 49 keypoints optained using [dlib library](http://dlib.net/)
 
