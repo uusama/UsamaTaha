@@ -10,7 +10,7 @@ It can classify 6 emotions
 * surprise
 
 the classifer used is an SVm classifer with an accurcay of 99% 
-obtained from 100 ssample.
+obtained from 100 test ssample.
 # Dataset
 ======
 Extended Cohn-Kanade Dataset (CK+)
@@ -21,6 +21,9 @@ you can install the program through Cmake using the provided file
 you will need to download [Dlib model](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 to be able to run the program . 
 notice this need you to have openCv installed in order to run it.
+# P.S
+=====
+the code is alittle rugh but i couldn't find the time to optmize it  
 
 ### License ###
 
