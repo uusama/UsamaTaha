@@ -21,6 +21,9 @@ Extended Cohn-Kanade Dataset (CK+)
 you can install the program using the provided Cmake file
 you will need to download [Dlib model](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 to be able to run the program . 
+if you need to try collecting the data yourself 
+there's a matlab code to collect the data from the datasets
+
 notice this need you to have openCv installed in order to run it.
 # P.S
 =====
