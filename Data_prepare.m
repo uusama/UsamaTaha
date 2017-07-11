@@ -1,14 +1,10 @@
 
 directory_name = 'C:\Users\H\Emo';
 files = dir(directory_name);
-% arr = {'EquivDiameter' 'MinorAxisLength'};
 
 fileIndex = find(~[files.isdir]);
 fileIndex = fileIndex(randperm(length(fileIndex)));
 
-%     if a ==2 || strcmp(arr(a),'BoundingBox')
-%         continue
-%     end
 emo = zeros(654,1);
 fac = zeros(654,1);
 % ln = zeros(327,136);
@@ -70,7 +66,8 @@ j =  k(1:20);%%%
 l =  k(27:end);%%%
 n = cat(1,kkk,j,l);
 ln1(i,:) = n;
-    
+
+%%%remove some points
 % j1 = k(1:2);
 % j2 = k(5:6);
 % j3 = k(9:10);
@@ -117,6 +114,8 @@ fileName = ['C:\Users\H\Emo\',files(fileIndex(i)).name];
 ln1(655 - i,:) = n;
     
 end
+%%%related to other ways 
+%%% but with less accuracy
 % end
 %   scatter(ln1(i,1:2:end),ln1(i,2:2:end))
 %  c;
@@ -310,6 +309,8 @@ res =  x+res;
 
  end
  re = res/100
+ 
+%%% some tests
 % % % % % % % % % % % % %  
 % % % % % % % % % % % % 
 % % %  arr(a)
