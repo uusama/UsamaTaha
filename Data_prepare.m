@@ -343,6 +343,7 @@ res =  x+res;
 % % subplot(1,2,2)
 % % scatter(mmm(1:2:end),mmm(2:2:end),'MarkerFaceColor','c')
 % % % score = predict(ada,mn)
+%%% save the data into files
 % % save('X_Train.txt', 'X_Train', '-ASCII','-append');
 % % save('y_Train.txt', 'y_Train', '-ASCII','-append');
 % % save('X_Test.txt', 'X_Test', '-ASCII','-append');
