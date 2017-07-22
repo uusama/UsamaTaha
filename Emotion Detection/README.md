@@ -27,7 +27,7 @@ there's a matlab code to collect the data from the datasets
 notice this need you to have openCv installed in order to run it.
 # P.S
 =====
-the code is a little rugh but i couldn't find the time to optmize it  
+the code is a little rugh but i couldn't find the time to clean it  
 
 ### License ###
 
