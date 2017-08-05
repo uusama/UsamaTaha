@@ -4,7 +4,9 @@ the code detect closed vs opened eyes using a webcam using [dlib library](http:/
 
 
 the classifer used is an SVm classifer with an accurcay of 81% 
-P.S:I'm not so sure about the accuracy hence the quality of the dataset is not that good (couldn't enhance the quality even applling multiple filters)
+
+P.S:I'm not so sure about the accuracy hence the quality of the dataset is not that good (couldn't enhance it even applling multiple filters)
+
 This the only Dataset i could find in the time of developing the code
 
 # Usage 
