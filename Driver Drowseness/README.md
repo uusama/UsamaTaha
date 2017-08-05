@@ -1,4 +1,4 @@
-# Emotion Detection
+# Driver Drowseness
 ======
 the code detect closed vs opened eyes using a webcam using [dlib library](http://dlib.net/)
 
