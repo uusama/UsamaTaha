@@ -1,28 +1,17 @@
 # Emotion Detection
 ======
-the code detect emotion using a webcam through cLassifing 49 keypoints optained using [dlib library](http://dlib.net/)
+the code detect closed vs opened eyes using a webcam using [dlib library](http://dlib.net/)
 
-the program can classify 6 emotions 
-* anger
-* disgust
-* fear
-* happy
-* sadness
-* surprise
 
-the classifer used is an SVm classifer with an accurcay of 99% 
-obtained from 100 test ssample.
-# Dataset
-======
-Extended Cohn-Kanade Dataset (CK+)
+the classifer used is an SVm classifer with an accurcay of 81% 
+P.S:I'm not so sure about the accuracy hence the quality of the dataset is not that good (couldn't enhance the quality even applling multiple filters)
+This the only Dataset i could find in the time of developing the code
 
 # Usage 
 ======
 you can install the program using the provided Cmake file
 you will need to download [Dlib model](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 to be able to run the program . 
-if you need to try collecting the data yourself 
-there's a matlab code to collect the data from the datasets
 
 notice this need you to have openCv installed in order to run it.
 # P.S
