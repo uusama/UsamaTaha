@@ -14,9 +14,9 @@ include(../dlib/cmake)
 # statement which takes the name of the output executable and then a list of
 # .cpp files to compile.  Here each example consists of only one .cpp file but
 # in general you will make programs that const of many .cpp files.
-ADD_EXECUTABLE(webcam_emotion_detection webcam_emotion_detection.cpp)
+ADD_EXECUTABLE(OPClosedPreclassified OPClosedPreclassified.cpp)
 # Then we tell it to link with dlib.
-TARGET_LINK_LIBRARIES(webcam_emotion_detection dlib)
+TARGET_LINK_LIBRARIES(OPClosedPreclassified dlib)
 
 
 
