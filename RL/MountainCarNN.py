@@ -43,6 +43,7 @@ with tf.Session() as sess:
         # The Q-Network
         while j < 200:
             j += 1
+            # Comment this to speed trainng time
             env.render()
             # Choose an action by greedily (with e chance of random action) from the Q-network
             s = np.reshape(s, (-1, 2))
