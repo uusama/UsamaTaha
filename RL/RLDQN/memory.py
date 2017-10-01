@@ -6,7 +6,7 @@ import numpy as np
 
 class RandomMemory:
     # Random Replay Memory
-    def __init__(self, max_size=64):
+    def __init__(self, max_size=256):
         self.memory = deque(max_size)
 
     def add(self, experience):

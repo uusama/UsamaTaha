@@ -3,9 +3,9 @@ import random
 
 
 class Agent:
-    def __init__(self, actions, q_value_function_model, eps=1.):
+    def __init__(self, actions, q_value_model, eps=.1):
         self.actions = actions  # available action
-        self.q_value = q_value_function_model
+        self.q_value = q_value_model
         self.eps = eps
 
     def move(self, state):
