@@ -9,7 +9,7 @@ class Agent:
         self.eps = eps
 
     def move(self, state):
-        action_values = self.q_value.predict([state])[0]
+        action_values = self.q_value.predict([state])
         if random.random() > self.eps:
             return np.argmax(action_values)
         else:
