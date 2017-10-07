@@ -185,3 +185,4 @@ class KNearestNeighbor(object):
                 #########################################################################
 
         return y_pred
+print(np.ones((3, 1)))
