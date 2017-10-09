@@ -1,7 +1,7 @@
 # UsamaTaha
 Here  you'll find my projects and the ideas i wanna share
 
-# P.S
+### P.S ###
 RL and CS231n have been realocated to separate repos
 
 ### Contact ###
