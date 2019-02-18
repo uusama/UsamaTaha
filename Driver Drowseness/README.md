@@ -18,7 +18,7 @@ to be able to run the program .
 notice this need you to have openCv installed in order to run it.
 # P.S
 =====
-the code is a little rugh but i couldn't find the time to clean it  
+the code is a little rugh but i haven't found the time to clean it  
 
 ### License ###
 
